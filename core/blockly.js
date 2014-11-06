@@ -100,9 +100,9 @@ Blockly.SPRITE = {
  * @return {string} RGB code, e.g. '#5ba65b'.
  */
 Blockly.makeColour = function(hue, sat, val) {
-  var saturation = (sat === undefined) ? Blockly.HSV_SATURATION : sat;
-  var value = (val === undefined) ? Blockly.HSV_VALUE : val;
-  return goog.color.hsvToHex(hue, sat, val * 256);
+  var saturation = (typeof sat === 'undefined') ? Blockly.HSV_SATURATION : sat;
+  var value = (typeof val === 'undefined') ? Blockly.HSV_VALUE : val;
+  return goog.color.hsvToHex(hue, saturation, value * 256);
 };
 /**
  * ENUM for a right-facing value input.  E.g. 'test' or 'return'.
