@@ -255,51 +255,6 @@ Blockly.Blocks['controls_if_else'] = {
   }
 };
 
-Blockly.Blocks['logic_compare'] = {
-  /**
-   * Block for comparison operator.
-   * @this Blockly.Block
-   */
-  init: function() {
-    var OPERATORS = Blockly.RTL ? [
-          ['=', 'EQ'],
-          ['\u2260', 'NEQ'],
-          ['>', 'LT'],
-          ['\u2265', 'LTE'],
-          ['<', 'GT'],
-          ['\u2264', 'GTE']
-        ] : [
-          ['=', 'EQ'],
-          ['\u2260', 'NEQ'],
-          ['<', 'LT'],
-          ['\u2264', 'LTE'],
-          ['>', 'GT'],
-          ['\u2265', 'GTE']
-        ];
-    this.setHelpUrl(Blockly.Msg.LOGIC_COMPARE_HELPURL);
-    this.setColour(210);
-    this.setOutput(true, 'Boolean');
-    this.appendValueInput('A');
-    this.appendValueInput('B')
-        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
-    this.setInputsInline(true);
-    // Assign 'this' to a variable for use in the tooltip closure below.
-    var thisBlock = this;
-    this.setTooltip(function() {
-      var op = thisBlock.getFieldValue('OP');
-      var TOOLTIPS = {
-        'EQ': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_EQ,
-        'NEQ': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_NEQ,
-        'LT': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LT,
-        'LTE': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LTE,
-        'GT': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GT,
-        'GTE': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GTE
-      };
-      return TOOLTIPS[op];
-    });
-  }
-};
-
 Blockly.Blocks['logic_operation'] = {
   /**
    * Block for logical operations: 'and', 'or'.
@@ -362,40 +317,5 @@ Blockly.Blocks['logic_boolean'] = {
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown(BOOLEANS), 'BOOL');
     this.setTooltip(Blockly.Msg.LOGIC_BOOLEAN_TOOLTIP);
-  }
-};
-
-Blockly.Blocks['logic_null'] = {
-  /**
-   * Block for null data type.
-   * @this Blockly.Block
-   */
-  init: function() {
-    this.setHelpUrl(Blockly.Msg.LOGIC_NULL_HELPURL);
-    this.setColour(210);
-    this.setOutput(true);
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.LOGIC_NULL);
-    this.setTooltip(Blockly.Msg.LOGIC_NULL_TOOLTIP);
-  }
-};
-
-Blockly.Blocks['logic_ternary'] = {
-  /**
-   * Block for ternary operator.
-   * @this Blockly.Block
-   */
-  init: function() {
-    this.setHelpUrl(Blockly.Msg.LOGIC_TERNARY_HELPURL);
-    this.setColour(210);
-    this.appendValueInput('IF')
-        .setCheck('Boolean')
-        .appendField(Blockly.Msg.LOGIC_TERNARY_CONDITION);
-    this.appendValueInput('THEN')
-        .appendField(Blockly.Msg.LOGIC_TERNARY_IF_TRUE);
-    this.appendValueInput('ELSE')
-        .appendField(Blockly.Msg.LOGIC_TERNARY_IF_FALSE);
-    this.setOutput(true);
-    this.setTooltip(Blockly.Msg.LOGIC_TERNARY_TOOLTIP);
   }
 };
