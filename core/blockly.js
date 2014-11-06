@@ -103,7 +103,12 @@ Blockly.makeColour = function(hue) {
   return goog.color.hsvToHex(hue, Blockly.HSV_SATURATION,
       Blockly.HSV_VALUE * 256);
 };
-
+/**
+ * Convert a HSV value into an RGB hex triplet 
+ */
+Blockly.makeColourFull = function(hue, sat, val) {
+  return goog.color.hsvToHex(hue, sat, val * 256);
+};
 /**
  * ENUM for a right-facing value input.  E.g. 'test' or 'return'.
  * @const
