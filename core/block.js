@@ -1171,11 +1171,21 @@ Blockly.Block.prototype.getColour = function() {
   return this.colourHue_;
 };
 
+Blockly.Block.prototype.getSaturation = function() {
+  return this.colourSaturation_;
+};
+
+Blockly.Block.prototype.getValue = function() {
+  return this.colourValue_;
+};
+
 /**
  * Change the colour of a block.
  * @param {number} colourHue HSV hue value.
  */
-Blockly.Block.prototype.setColour = function(colourHue) {
+Blockly.Block.prototype.setColour = function(colourHue, colourSat, colourVal) {
+  this.colourSaturation_ = colourSat;
+  this.colourValue_ = colourVal;
   this.colourHue_ = colourHue;
   if (this.svg_) {
     this.svg_.updateColour();
